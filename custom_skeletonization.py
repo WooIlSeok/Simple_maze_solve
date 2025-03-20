@@ -19,6 +19,9 @@ def skeletonize(img_bin):
     P7 = img[2:, :-2]
     P8 = img[1:-1, :-2]
     P9 = img[:-2, :-2]
+
+    object_n = P2 + P3 + P4 + P5 + P6 + P7 + P8 + P9
+    img[1:-1, 1:-1] = np.where((P1 == 0) & (object_n >= 1), 1, P1)
     
     while True:
         prev = img.copy()
